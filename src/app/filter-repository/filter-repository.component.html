@@ -1,0 +1,28 @@
+<h1>Search in Github</h1>
+
+<input type="text" name="search-box" class="search-box" (keyup)="sendData($event)">
+<section class="search-filters">
+    <mat-checkbox (click)="getSelected()"
+                    name="projects"
+                    value="{{isMITLicense}}"
+                    color="primary">&nbsp;&nbsp;{{checkBoxText}}</mat-checkbox>
+    <input [(ngModel)]="searchText" placeholder="Filter by description" class="filter-box">
+</section>
+<section class="search-results">
+    <div *ngIf="showSpinner"><mat-spinner class="spinner-center"></mat-spinner></div>
+    <div *ngIf="!showSpinner">
+        <p *ngIf="items && items.lenght < 1 && hasQuery">Sorry, nothing found.</p>
+        <p *ngIf="totalCount && totalCount > 0 && hasQuery">Total found:&nbsp;&nbsp;&nbsp;{{totalCount}}</p>
+        <p *ngIf="isError">{{errorMessage}}</p>
+        <ng-template *ngIf="!isError" ngFor let-item [ngForOf]="itemsFiltered | filter : searchText" let-i="index">
+            <hr *ngIf="i > 0" />
+            <a href="{{item.clone_url}}" target="_blank">Go to page in Github</a>
+            <p><b>Descriptions:&nbsp;</b>{{item.description}}&nbsp;&nbsp;<span><a routerLink="./showRepository/{{item.id}}">(Show more...)</a></span></p>
+            <p><b>URLs to clone</b></p>
+                <p><b>clone_url:&nbsp;</b>{{item.clone_url}}</p>
+                <p><b>ssh url:&nbsp;</b>{{item.ssh_url}}</p>
+            <p><b>Topics:&nbsp;</b><span *ngFor="let topic of item.topics"><span>{{topic}}&nbsp;</span></span></p>
+        </ng-template>
+    </div>
+</section>
+

@@ -5,25 +5,17 @@ h1 {
     font-size: 3.3rem;
 }
 
-.search-box {
-   display: block;
-   margin: 20px auto 0 auto;
-   padding: 10px 20px;
-   max-width: 600px;
-   width: 90%;
-}
-
-.filter-box {
-   display: block;
-   margin: 40px auto 20px 0;
-   padding: 10px 20px;
-   max-width: 250px;
-   width: 60%;
+h3 {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #E8ECEF;
+    font-size: 2rem;
 }
 
 .link-text {
     cursor: pointer;
 }
+
 
 .search-results {
     max-width: 600px;
@@ -37,12 +29,6 @@ h1 {
     p {
         margin: 10px 0;
     }
-}
-
-.search-filters {
-    max-width: 600px;
-    width: 60%;
-    margin: 20px auto 0 auto;
 }
 
 body{
